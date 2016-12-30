@@ -23,7 +23,7 @@ public class GameScreen implements Screen {
     public void show() {
         batch = new SpriteBatch();
         carTexture = new Texture(Gdx.files.internal("car.png"));
-        car = new Car(carTexture, 0, 0, 146, 288);
+        car = new Car(carTexture, 30, 0, 146, 288);
     }
 
     @Override
