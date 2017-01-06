@@ -16,6 +16,7 @@ abstract class GameObject {
     Rectangle bounds;
     Sprite object;
 
+
     GameObject(Texture texture, float x, float y, float width, float height) {
         bounds = new Rectangle(x, y, width, height);
         object = new Sprite(texture);
