@@ -3,7 +3,7 @@ package com.fogok.racegame.model;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Polygon;
 
 /**
  * Created by FOGOK on 23.12.2016 9:14.
@@ -13,19 +13,29 @@ import com.badlogic.gdx.math.Rectangle;
  */
 abstract class GameObject {
 
-    Rectangle bounds;
+    Polygon bounds;
     Sprite object;
 
 
     GameObject(Texture texture, float x, float y, float width, float height) {
-        bounds = new Rectangle(x, y, width, height);
         object = new Sprite(texture);
+        object.setSize(width, height);
+        object.setOrigin(width / 2f, height / 2f);
+        object.setPosition(x, y);
+
+        bounds = new Polygon(new float[]{0f, 0f, width, 0f, width, height, 0f, height});
+        bounds.setPosition(x, y);
+        object.setOrigin(width / 2f, height / 2f);
     }
 
 
     public void draw(SpriteBatch batch){
-        object.setBounds(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+        object.setPosition(bounds.getX(), bounds.getY());
+        object.setRotation(bounds.getRotation());
         object.draw(batch);
     }
 
+    public Polygon getBounds() {
+        return bounds;
+    }
 }
