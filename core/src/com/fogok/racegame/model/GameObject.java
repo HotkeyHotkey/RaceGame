@@ -1,8 +1,8 @@
 package com.fogok.racegame.model;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Polygon;
 
 /**
@@ -17,8 +17,8 @@ abstract class GameObject {
     Sprite object;
 
 
-    GameObject(Texture texture, float x, float y, float width, float height) {
-        object = new Sprite(texture);
+    GameObject(TextureRegion textureRegion, float x, float y, float width, float height) {
+        object = new Sprite(textureRegion);
         object.setSize(width, height);
         object.setOrigin(width / 2f, height / 2f);
         object.setPosition(x, y);
